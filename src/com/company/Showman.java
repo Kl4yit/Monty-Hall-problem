@@ -79,9 +79,7 @@ public class Showman {
 //        System.out.println("Would you like to change your selection?\n(y/n)");
 //        Scanner scanner = new Scanner(System.in);
 //        String option = scanner.nextLine();
-        String [] arrstr = {"y", "n"};
-        Random rnd = new Random();
-        String option = arrstr[rnd.nextInt(2)];
+        String option = "y";
         if (option.equals("y")){
             int buffer = 0;
             for (int i = 1; i < 4; i++) {
