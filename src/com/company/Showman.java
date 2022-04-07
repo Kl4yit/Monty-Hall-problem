@@ -11,36 +11,41 @@ public class Showman {
 
     private Showman(int revealedDoor) {
         prizeDoor = revealedDoor;
-        System.out.println("Welcome to the \"Monty Hall problem\"");
-        System.out.println("-----------------------------------------------------");
-        System.out.println("You have a choice of three doors. Choose any of them!");
-        System.out.println("+-+   +-+   +-+");
-        System.out.println("|1|   |2|   |3|");
-        System.out.println("+-+   +-+   +-+\n");
-        System.out.println("To continue input the door number:");
+//        System.out.println("Welcome to the \"Monty Hall problem\"");
+//        System.out.println("-----------------------------------------------------");
+//        System.out.println("You have a choice of three doors. Choose any of them!");
+//        System.out.println("+-+   +-+   +-+");
+//        System.out.println("|1|   |2|   |3|");
+//        System.out.println("+-+   +-+   +-+\n");
+//        System.out.println("To continue input the door number:");
         Scanner scanner = new Scanner(System.in);
-        usersChoice = scanner.nextInt();
+//        usersChoice = scanner.nextInt();
+        Random rnd = new Random();
+        usersChoice = rnd.nextInt(3) + 1;
         sayChosenDoor();
     }
 
     public static Showman getInstance(int prizeDoor){
         if(instance == null){
             instance = new Showman(prizeDoor);
+            return instance;
         }
+        instance.prizeDoor = prizeDoor;
         return instance;
     }
 
     public void sayChosenDoor(){
-        System.out.println("You chose a door №" + usersChoice);
+//        System.out.println("You chose a door №" + usersChoice);
     }
 
-    public void openDoor(int doorNum){
-        System.out.println("---Showman opens the door №" + doorNum + "---");
+    public int openDoor(int doorNum){
+//        System.out.println("---Showman opens the door №" + doorNum + "---");
         if (doorNum == prizeDoor){
-            System.out.println("!!!you won a prize!!!");
-            return;
+//            System.out.println("!!!You won a prize!!!");
+            return 1;
         }
-        System.out.println("---It's empty here---");
+//        System.out.println("---It's empty here---");
+        return 0;
     }
 
     public void chooseWrongDoor(){
@@ -70,10 +75,13 @@ public class Showman {
         return  result;
     }
 
-    public void askRedecide(){
-        System.out.println("Would you like to change your selection?\n(y/n)");
-        Scanner scanner = new Scanner(System.in);
-        String option = scanner.nextLine();
+    public int askRedecide(){
+//        System.out.println("Would you like to change your selection?\n(y/n)");
+//        Scanner scanner = new Scanner(System.in);
+//        String option = scanner.nextLine();
+        String [] arrstr = {"y", "n"};
+        Random rnd = new Random();
+        String option = arrstr[rnd.nextInt(2)];
         if (option.equals("y")){
             int buffer = 0;
             for (int i = 1; i < 4; i++) {
@@ -83,9 +91,11 @@ public class Showman {
             }
             usersChoice = buffer;
             sayChosenDoor();
-            openDoor(usersChoice);
-            return;
+//            openDoor(usersChoice);
+//            return;
+            return openDoor(usersChoice);
         }
-        openDoor(usersChoice);
+//        openDoor(usersChoice);
+        return openDoor(usersChoice);
     }
 }
