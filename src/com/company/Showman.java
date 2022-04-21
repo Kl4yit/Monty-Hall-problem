@@ -28,8 +28,12 @@ public class Showman {
     public static Showman getInstance(int prizeDoor){
         if(instance == null){
             instance = new Showman(prizeDoor);
+            Random rnd = new Random();
+            usersChoice = rnd.nextInt(3) + 1;
             return instance;
         }
+        Random rnd = new Random();
+        usersChoice = rnd.nextInt(3) + 1;
         instance.prizeDoor = prizeDoor;
         return instance;
     }
