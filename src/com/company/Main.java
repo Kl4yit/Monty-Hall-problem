@@ -39,7 +39,7 @@ public class Main {
             MontyHoll = Showman.getInstance(myRnd + 1);
             MontyHoll.chooseWrongDoor();
             int res = MontyHoll.askRedecide();
-            resArr[res] += 1;
+            resArr[res]++;
         }
         System.out.println(Arrays.toString(resArr));
     }
