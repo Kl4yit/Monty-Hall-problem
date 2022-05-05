@@ -12,15 +12,7 @@ public class Showman {
 
     private Showman(int revealedDoor) {
         prizeDoor = revealedDoor;
-//        System.out.println("Welcome to the \"Monty Hall problem\"");
-//        System.out.println("-----------------------------------------------------");
-//        System.out.println("You have a choice of three doors. Choose any of them!");
-//        System.out.println("+-+   +-+   +-+");
-//        System.out.println("|1|   |2|   |3|");
-//        System.out.println("+-+   +-+   +-+\n");
-//        System.out.println("To continue input the door number:");
         Scanner scanner = new Scanner(System.in);
-//        usersChoice = scanner.nextInt();
         Random rnd = new Random();
         usersChoice = rnd.nextInt(3) + 1;
         sayChosenDoor();
@@ -40,16 +32,12 @@ public class Showman {
     }
 
     public void sayChosenDoor(){
-//        System.out.println("You chose a door №" + usersChoice);
     }
 
     public int openDoor(int doorNum){
-//        System.out.println("---Showman opens the door №" + doorNum + "---");
         if (doorNum == prizeDoor){
-//            System.out.println("!!!You won a prize!!!");
             return 1;
         }
-//        System.out.println("---It's empty here---");
         return 0;
     }
 
@@ -81,10 +69,6 @@ public class Showman {
     }
 
     public int askRedecide(){
-//        System.out.println("Would you like to change your selection?\n(y/n)");
-//        Scanner scanner = new Scanner(System.in);
-//        String option = scanner.nextLine();
-//        String option = "n";
         if (option.equals("y")){
             int buffer = 0;
             for (int i = 1; i < 4; i++) {
@@ -94,11 +78,8 @@ public class Showman {
             }
             usersChoice = buffer;
             sayChosenDoor();
-//            openDoor(usersChoice);
-//            return;
             return openDoor(usersChoice);
         }
-//        openDoor(usersChoice);
         return openDoor(usersChoice);
     }
 }
